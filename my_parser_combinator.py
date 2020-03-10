@@ -44,5 +44,6 @@ def choice(parser, other):
 
 python_parser = string("Python")
 haskell_parser = string("Haskell")
+java_parser = string("Java")
 
-lang_parser = choice(python_parser, haskell_parser)
+lang_parser = choice(python_parser, choice(java_parser, haskell_parser))
