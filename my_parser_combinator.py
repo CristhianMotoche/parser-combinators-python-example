@@ -32,3 +32,5 @@ def string(s):
         else:
             return None
     return string_parser
+
+python_parser = string("Python")
