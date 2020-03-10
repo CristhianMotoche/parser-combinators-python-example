@@ -32,3 +32,17 @@ def string(s):
         else:
             return None
     return string_parser
+
+
+def choice(parser, other):
+    @Parser
+    def choice_parser(text):
+        res = parser(text)
+        return res if res else other(text)
+    return choice_parser
+
+
+python_parser = string("Python")
+haskell_parser = string("Haskell")
+
+lang_parser = choice(python_parser, haskell_parser)
