@@ -14,6 +14,9 @@ class Parser:
         else:
             raise ParseError(text)
 
+    def __or__(self, other):
+        return choice(self, other)
+
 
 class ParseError(Exception):
 
@@ -45,5 +48,13 @@ def choice(parser, other):
 python_parser = string("Python")
 haskell_parser = string("Haskell")
 java_parser = string("Java")
+js_parser = string("JavaScript")
+css_parser = string("CSS")
 
-lang_parser = choice(python_parser, choice(java_parser, haskell_parser))
+lang_parser = (
+      python_parser
+    | haskell_parser
+    | java_parser
+    | js_parser
+    | css_parser
+)
