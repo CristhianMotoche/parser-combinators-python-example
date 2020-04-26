@@ -10,4 +10,13 @@ lang_parser = (
     | haskell_parser
     | java_parser
     | css_parser
-    ).map(lambda lang: lang.lower())
+    )
+
+l_bracket = p.string("[")
+r_bracket = p.string("]")
+
+lang_closed_parser = (
+    l_bracket >> lang_parser << r_bracket
+).map(
+    lambda lang: lang.lower()
+)
