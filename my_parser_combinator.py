@@ -22,3 +22,13 @@ class ParseError(Exception):
 
     def __str__(self):
         return "unexpected input: '%s'" % self.text
+
+
+if __name__ == '__main__':
+    idParser = Parser(lambda x: x)
+
+    # idParser("text")
+    #    --> __call__("text")
+    #        --> lambda "text": "text"
+
+    assert idParser("text") == "text"
