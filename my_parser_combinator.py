@@ -59,6 +59,7 @@ def choice(parser, other):
     return choice_parser
 
 
+
 def skip_left(left_parser, parser):
     @Parser
     def skip_left_parser(text, index):
@@ -66,7 +67,10 @@ def skip_left(left_parser, parser):
         return res if not res.status else parser(text, res.index)
     return skip_left_parser
 
-
+# [CSS]
+# ^
+# |
+# index
 
 def skip_right(parser, right_parser):
     @Parser
@@ -76,6 +80,10 @@ def skip_right(parser, right_parser):
         return res if res_right.status else res_right
     return skip_right_parser
 
+# [CSS]
+#    ^
+#    |
+# index
 
 python_parser = string("Python")
 haskell_parser = string("Haskell")
